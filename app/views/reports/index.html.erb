@@ -7,20 +7,22 @@
     <th>Started at</th>
     <th>Left at</th>
     <th>Lunch for</th>
+    <th>Away for</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
 
-<% @reports.each do |report| %>
+  <% @reports.each do |report| %>
   <tr>
     <td><%= link_to report.worked_on, report %></td>
-    <td><%= report.started_at %></td>
-    <td><%= report.left_at %></td>
+    <td><%= "0" if report.started_at.hour < 10 %><%= report.started_at.hour %> : <%= "0" if report.started_at.min < 10 %><%= report.started_at.min %></td>
+    <td><%= "0" if report.left_at.hour < 10 %><%= report.left_at.hour %> : <%= "0" if report.left_at.min < 10 %><%= report.left_at.min %></td>
     <td><%= report.lunch_for %></td>
+    <td><%= report.away_for %></td>
     <td><%= link_to 'Edit', edit_report_path(report) %></td>
     <td><%= link_to 'Delete', report, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <br />

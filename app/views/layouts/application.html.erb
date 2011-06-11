@@ -2,61 +2,61 @@
 <html>
   <head>
     <title>Working925 - <%= content_for?(:title) ? yield(:title) : "What a way to make a living" %></title>
-    <%= stylesheet_link_tag 'custom' %>
     <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
     <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+    <%= stylesheet_link_tag 'custom' %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
   </head>
   <body>
+    <div id="container">
 
-    <header>
-      <h1>Working925</h1>
-      <p>
-        <em>What a way to make a living</em>
-      </p>
-    </header>
+      <header>
+        <h1>Working925</h1>
+        <p>
+          <em>What a way to make a living</em>
+        </p>
+      </header>
 
-    <nav>
-      <ul>
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-          <%= link_to "My reports", reports_path %>
-        </li>
-        <li>
-          <%= link_to "New report", new_report_path %>
-        </li>
-      </ul>
-    </nav>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "Home", root_path %>
+          </li>
+          <li>
+            <%= link_to "My reports", reports_path %>
+          </li>
+          <li>
+            <%= link_to "New report", new_report_path %>
+          </li>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to current_user.email, edit_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "Sign out", destroy_user_session_path %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "Sign in", new_user_session_path %>
+          </li>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
 
-    <ul>
-      <% if user_signed_in? %>
-      <li>
-        <%= link_to current_user.email, edit_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Sign out", destroy_user_session_path %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to "Sign in", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
+      <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, :class => "flash #{key}") %>
       <% end %>
-    </ul>
 
-    <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, :class => "flash #{key}") %>
-    <% end %>
+      <%= yield %>
 
-    <%= yield %>
+      <footer>
+        <%= link_to "Working925", root_path %> &copy; <%= mail_to "freddieboi@gmail.com", "Freddie" %>
+      </footer>
 
-    <footer>
-      <%= link_to "Working925", root_path %> &copy; <%= mail_to "freddieboi@gmail.com", "Freddie" %>
-    </footer>
+    </div>
   </body>
 </html>

@@ -3,17 +3,22 @@
 
 <p>
   <b>Started at:</b>
-  <%= @report.started_at.hour %> : <%= @report.started_at.min %>
+  <%= "0" if @report.started_at.hour < 10 %><%= @report.started_at.hour %> : <%= "0" if @report.started_at.min < 10 %><%= @report.started_at.min %>
 </p>
 
 <p>
   <b>Left at:</b>
-  <%= @report.left_at.hour %> : <%= @report.left_at.min %>
+  <%= "0" if @report.left_at.hour < 10 %><%= @report.left_at.hour %> : <%= "0" if @report.left_at.min < 10 %><%= @report.left_at.min %>
 </p>
 
 <p>
   <b>Lunch for:</b>
   <%= @report.lunch_for %> minutes
+</p>
+
+<p>
+  <b>Away for:</b>
+  <%= @report.away_for %> minutes
 </p>
 
 <%= link_to 'Edit', edit_report_path(@report) %> |

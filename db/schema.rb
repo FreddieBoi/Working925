@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610215602) do
+ActiveRecord::Schema.define(:version => 20110611113447) do
+
+  create_table "reports", :force => true do |t|
+    t.date     "worked_on"
+    t.time     "started_at"
+    t.time     "left_at"
+    t.integer  "lunch_for"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -1,0 +1,37 @@
+<%= form_for(@report) do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :worked_on %><br />
+    <%= f.date_select :worked_on %>
+  </div>
+  <div class="field">
+    <%= f.label :started_at %><br />
+    <%= f.time_select :started_at %>
+  </div>
+  <div class="field">
+    <%= f.label :left_at %><br />
+    <%= f.time_select :left_at %>
+  </div>
+  <div class="field">
+    <%= f.label :lunch_for %><br />
+    <%= f.text_field :lunch_for %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

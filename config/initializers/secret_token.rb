@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Working925::Application.config.secret_token = 'b1b1cc91f0ead1144dcc17be1b5904e9c3397cef69951402dc339784f0f6ef8c76c37b21286cd2b373ef53d4d7e0bf5b034b0cb37db8d6e736f9f5dd013f6145'
+Working925::Application.config.secret_token = 'afd1fdbe3b572ccf7ebc3aa102e44c79a4f933923d4a426dadf1be8aed4518945e140f4b3db78e3bddceb0bd9a38687098fca0c84834e9882a256dba20af4569'

@@ -1,8 +1,13 @@
 class ReportsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
+  before_filter :ensure_correct_user!, :only => [ :show, :edit, :update, :destroy ]
+  
   # GET /reports
   # GET /reports.xml
   def index
-    @reports = Report.all
+    @reports = Report.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +46,7 @@ class ReportsController < ApplicationController
   # POST /reports.xml
   def create
     @report = Report.new(params[:report])
+    @report.user = current_user
 
     respond_to do |format|
       if @report.save
@@ -79,5 +85,12 @@ class ReportsController < ApplicationController
       format.html { redirect_to(reports_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+
+  def ensure_correct_user!
+    @report = Report.find(params[:id])
+    redirect_to(reports_path, :alert => "You may not perform this action!") and return unless current_user == @report.user
   end
 end

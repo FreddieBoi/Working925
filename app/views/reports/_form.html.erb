@@ -1,22 +1,31 @@
 <%= form_for(@report) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <div class="field">
-    <%= f.label :worked_on %><br />
-    <%= f.date_select :worked_on %>
-  </div>
-  <div class="field">
-    <%= f.label :started_at %><br />
-    <%= f.time_select :started_at %>
-  </div>
-  <div class="field">
-    <%= f.label :left_at %><br />
-    <%= f.time_select :left_at %>
-  </div>
-  <div class="field">
-    <%= f.label :lunch_for %><br />
-    <%= f.text_field :lunch_for %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :worked_on %>
+  <br />
+  <%= f.date_select :worked_on %>
+</div>
+<div class="field">
+  <%= f.label :started_at %>
+  <br />
+  <%= f.time_select :started_at %>
+</div>
+<div class="field">
+  <%= f.label :left_at %>
+  <br />
+  <%= f.time_select :left_at %>
+</div>
+<div class="field">
+  <%= f.label :lunch_for, "Lunch for (minutes)" %>
+  <br />
+  <%= f.text_field :lunch_for %>
+</div>
+<div class="field">
+  <%= f.label :away_for, "Away for (minutes)" %>
+  <br />
+  <%= f.text_field :away_for %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

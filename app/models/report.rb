@@ -19,6 +19,14 @@ class Report < ActiveRecord::Base
                         
   before_save :check_time
   
+  def worked_for_m
+    (left_at-started_at)/60 - (lunch_for+away_for)
+  end
+  
+  def worked_for_h
+    worked_for_m/60
+  end
+  
   private
   
   def check_time

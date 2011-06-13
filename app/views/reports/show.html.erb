@@ -22,8 +22,8 @@
 </p>
 
 <p>
-  <b>Total:</b>
-  <%= @report.worked_for_h %> hours (<%= (@report.worked_for_m/60).to_i %> hours <%= (@report.worked_for_m%60).to_i %> minutes)
+  <b>Totally worked for:</b>
+  <%= @report.worked_for_h %> hours (<%= @report.worked_for_s %>)
 </p>
 
 <%= link_to 'Edit', edit_report_path(@report) %> |

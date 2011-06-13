@@ -1,7 +1,6 @@
 body {
   background: #222;
 }
-
 #container {
   width: 720px;
   margin-left: auto;
@@ -10,14 +9,13 @@ body {
   background: white;
 }
 header {
-
 }
 /* Navigation */
 nav {
   background-color: white;
   padding: 0 0.7em;
   white-space: nowrap;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 nav ul {
   margin: 0;
@@ -32,7 +30,6 @@ nav ul li a {
   padding: 0 5px;
   font-weight: bold;
 }
-
 div.field, div.actions {
   margin-bottom: 10px;
 }
@@ -71,11 +68,66 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-
 footer {
   text-align: center;
   margin-top: 20px;
   width: 710px;
   margin-left: auto;
   margin-right: auto;
+}
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#calendar td, #calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+#calendar td {
+  background: #FFF;
+  color: #222;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+#calendar td.weekend {
+  background: #eee;
+  color: #555;
+}
+#calendar .notmonth, #calendar td.weekend.notmonth {
+  color: #999;
+}
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+#calendar .today {
+  background-color: #D7F2FF;
+}
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
 }

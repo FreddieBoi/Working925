@@ -27,6 +27,10 @@ class Report < ActiveRecord::Base
     worked_for_m/60
   end
   
+  def worked_for_s
+    "#{(worked_for_m/60).to_i} hours #{(worked_for_m%60).to_i} minutes"
+  end
+  
   private
   
   def check_time

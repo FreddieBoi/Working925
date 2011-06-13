@@ -1,30 +1,29 @@
 <% title "My reports" %>
 <h2>My reports</h2>
-
-<table>
-  <tr>
-    <th>Worked on</th>
-    <th>Started at</th>
-    <th>Left at</th>
-    <th>Lunch for</th>
-    <th>Away for</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-
-  <% @reports.each do |report| %>
-  <tr>
-    <td><%= link_to report.worked_on, report %></td>
-    <td><%= "0" if report.started_at.hour < 10 %><%= report.started_at.hour %> : <%= "0" if report.started_at.min < 10 %><%= report.started_at.min %></td>
-    <td><%= "0" if report.left_at.hour < 10 %><%= report.left_at.hour %> : <%= "0" if report.left_at.min < 10 %><%= report.left_at.min %></td>
-    <td><%= report.lunch_for %></td>
-    <td><%= report.away_for %></td>
-    <td><%= link_to 'Edit', edit_report_path(report) %></td>
-    <td><%= link_to 'Delete', report, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<p>
+  Found <%= pluralize(@reports.count, "report") %> for <%= h @date.strftime("%Y-%m") %>.
+</p>
+<p>
+  <b>Totally worked for:</b>
+  <%= @total_h %> hours (<%= @total_s %>)
+</p>
+<div id="calendar">
+  <h2 id="month"> <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+  <%= h @date.strftime("%B %Y") %>
+  <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %></h2>
+  <% calendar_for @reports, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+    <% calendar.day(:day_method => :worked_on) do |date, reports|%>
+      <%= date.day %>
+      <ul>
+        <% for report in reports %>
+        <li>
+          <%= link_to "#{h(report.worked_for_h)} hours", report %>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
-</table>
-
+</div>
 <br />
-
 <%= link_to 'New report', new_report_path %>

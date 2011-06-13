@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(:version => 20110611113447) do
 
   create_table "reports", :force => true do |t|
-    t.date     "worked_on",                                     :null => false
-    t.time     "started_at", :default => '2000-01-01 08:00:00', :null => false
-    t.time     "left_at",    :default => '2000-01-01 16:00:00', :null => false
+    t.date     "worked_on",  :default => '2011-06-13',          :null => false
+    t.time     "started_at", :default => '2000-01-01 09:00:00', :null => false
+    t.time     "left_at",    :default => '2000-01-01 17:00:00', :null => false
     t.integer  "lunch_for",  :default => 60,                    :null => false
     t.integer  "away_for",   :default => 0,                     :null => false
     t.integer  "user_id"

@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20110611113447
+#
+# Table name: reports
+#
+#  id         :integer         not null, primary key
+#  worked_on  :date            not null
+#  started_at :time            default(2000-01-01 08:00:00 UTC), not null
+#  left_at    :time            default(2000-01-01 16:00:00 UTC), not null
+#  lunch_for  :integer         default(60), not null
+#  away_for   :integer         default(0), not null
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Report < ActiveRecord::Base
   belongs_to :user
 

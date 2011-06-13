@@ -1,5 +1,5 @@
 body {
-  background: gray;
+  background: #222;
 }
 
 #container {
@@ -14,12 +14,10 @@ header {
 }
 /* Navigation */
 nav {
-  
-}
-nav {
   background-color: white;
   padding: 0 0.7em;
   white-space: nowrap;
+  margin-bottom: 20px; 
 }
 nav ul {
   margin: 0;
@@ -76,7 +74,7 @@ div.field, div.actions {
 
 footer {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 710px;
   margin-left: auto;
   margin-right: auto;

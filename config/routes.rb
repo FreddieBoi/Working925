@@ -1,8 +1,12 @@
 Working925::Application.routes.draw do
   
-  resources :reports
-
   devise_for :users
+
+  resources :tasks
+
+  resources :projects
+
+  resources :reports
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

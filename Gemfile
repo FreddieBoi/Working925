@@ -25,6 +25,9 @@ gem 'jquery-rails'
 
 gem 'devise'
 
+gem 'inherited_resources', '>= 1.3.1'
+gem 'friendly_id', '~> 4.0.0'
+
 group :development do
   gem 'annotate', '2.4.1.beta1'
   # To use debugger

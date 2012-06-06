@@ -11,32 +11,56 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110702131552) do
+ActiveRecord::Schema.define(:version => 20120606210515) do
 
-  create_table "reports", :force => true do |t|
-    t.date      "worked_on",                                     :null => false
-    t.time      "started_at", :default => '2000-01-01 09:00:00', :null => false
-    t.time      "left_at",    :default => '2000-01-01 17:00:00', :null => false
-    t.integer   "lunch_for",  :default => 60,                    :null => false
-    t.integer   "away_for",   :default => 0,                     :null => false
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+  create_table "projects", :force => true do |t|
+    t.string   "title",      :null => false
+    t.text     "desc"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
+  add_index "projects", ["slug"], :name => "index_projects_on_slug", :unique => true
+
+  create_table "reports", :force => true do |t|
+    t.date     "worked_on",                                     :null => false
+    t.time     "started_at", :default => '2000-01-01 09:00:00', :null => false
+    t.time     "left_at",    :default => '2000-01-01 17:00:00', :null => false
+    t.integer  "lunch_for",  :default => 60,                    :null => false
+    t.integer  "away_for",   :default => 0,                     :null => false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["user_id"], :name => "index_reports_on_user_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "title",      :null => false
+    t.text     "desc"
+    t.integer  "project_id"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
+  add_index "tasks", ["slug"], :name => "index_tasks_on_slug", :unique => true
+
   create_table "users", :force => true do |t|
-    t.string    "email",                                 :default => "", :null => false
-    t.string    "encrypted_password",     :limit => 128, :default => "", :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",                         :default => 0
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

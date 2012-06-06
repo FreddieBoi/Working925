@@ -51,7 +51,7 @@ pre {
 
 html, body {
   @include box-shadow;
-  //background-image: url(bg.png);
+  background-image: url(bg.png);
   background-color: $background-color;
   color: #fff;
   font-family: verdana, arial, helvetica, sans-serif;

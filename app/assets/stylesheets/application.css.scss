@@ -1,0 +1,192 @@
+/*
+ *= require_self
+ */
+
+$highlight-color: #F5AD24;
+$content-background-color: #668A54; //darken(#7FA56C, 10%);
+$dark-content-background-color: #213423;
+$background-color: #373737;
+$sharp-border: 2px solid #000;
+
+@mixin text-shadow {
+  text-shadow: 1px 1px 2px #000;
+  filter: dropshadow(color=#000, offx=1, offy=1);
+}
+
+@mixin rounded-corners($radius: 10px) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -khtml-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($radius: 50px, $color: #000) {
+  -webkit-box-shadow: 0px 0px $radius 0px $color;
+  -moz-box-shadow: 0px 0px $radius 0px $color;
+  box-shadow: 0px 0px $radius 0px $color;
+}
+
+@import "layout.css.scss";
+
+.notice, .error, .alert {
+  padding: 5px 8px;
+  color: #000;
+}
+
+.notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+.error, .alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+pre {
+  background-color: $dark-content-background-color;
+  font-size: 11px;
+  padding: 15px;
+}
+
+html, body {
+  @include box-shadow;
+  //background-image: url(bg.png);
+  background-color: $background-color;
+  color: #fff;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+a {
+  @include text-shadow;
+  color: $highlight-color;
+  text-decoration: none;
+  &:hover {
+    color: #fff;
+  }
+}
+
+header {
+  #heading {
+    padding-left: 110px;
+    background-image: linear-gradient(bottom, darken($content-background-color, 20%) 0%, $highlight-color 100%);
+    background-image: -o-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $highlight-color 100%);
+    background-image: -moz-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $highlight-color 100%);
+    background-image: -webkit-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $highlight-color 100%);
+    background-image: -ms-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $highlight-color 100%);
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, darken($content-background-color, 20%)),
+      color-stop(1, $content-background-color)
+    );
+    h1 {
+      @include text-shadow;
+      color: $highlight-color;
+      padding: 30px 0 15px;
+      a {
+        @include text-shadow;
+        color: #fff;
+        text-decoration: none;
+        &:visited {
+          @include text-shadow;
+          color: #fff;
+          text-decoration: none;
+        }
+        &:hover {
+          @include text-shadow;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+    em {
+      @include text-shadow;
+      font-size: 17px;
+    }
+  }
+  #header-nav {
+    float: left;
+    background-color: $dark-content-background-color;
+    border-top: $sharp-border;
+    border-bottom: $sharp-border;
+    font-size: 17px;
+    width: 375px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    li {
+      padding: 5px 10px 5px;
+    }
+  }
+  #user-nav {
+    text-align: right;
+    border-top: $sharp-border;
+    border-bottom: $sharp-border;
+    background-color: $dark-content-background-color;
+    font-size: 13px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    li {
+      padding: 5px 5px 5px;
+    }
+  }
+}
+
+nav {
+  margin: 0;
+  padding: 0 25px 0;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  padding: 18px 0 0;
+  margin: 0;
+  font-size: 13px;
+  background-color: $dark-content-background-color;
+  border-top: $sharp-border;
+  #copyright-notes {
+    text-align: center;
+  }
+  p {
+    font-size: 13px;
+  }
+}
+
+section#content {
+  background-color: $content-background-color;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  h1, h2, h3 {
+    @include text-shadow;
+    color: #fff;
+    padding-bottom: 10px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  #disqus_thread {
+    padding-top: 50px;
+  }
+}
+
+nav {
+  margin: 0;
+  padding: 0 25px 0;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+@import "pages.css.scss";

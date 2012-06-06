@@ -1,0 +1,110 @@
+$width: 720px;
+
+html, body {
+  margin: 0 auto 0;
+  padding: 0;
+  width: $width;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+}
+
+#heading {
+  margin: 0;
+  padding: 0;
+  height: 130px;
+}
+    
+nav {
+  ul {
+    li {
+      list-style-type: none;
+      display: inline-block;
+    }
+  }
+}
+
+section {
+  margin: 0;
+  padding: 0 25px 0;
+}
+
+footer {
+  height: 180px;
+  width: $width;
+}
+
+pre {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #ddd;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+#calendar td {
+  background: #fff;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+#calendar .notmonth {
+  color: #CCC;
+}
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  padding: 0 10px;
+}
+
+#calendar .today {
+  background-color: #DDD;
+  color: #000;
+}
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}

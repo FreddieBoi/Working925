@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,14 +14,14 @@
 ActiveRecord::Schema.define(:version => 20110702131552) do
 
   create_table "reports", :force => true do |t|
-    t.date     "worked_on",                                     :null => false
-    t.time     "started_at", :default => '2000-01-01 09:00:00', :null => false
-    t.time     "left_at",    :default => '2000-01-01 17:00:00', :null => false
-    t.integer  "lunch_for",  :default => 60,                    :null => false
-    t.integer  "away_for",   :default => 0,                     :null => false
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date      "worked_on",                                     :null => false
+    t.time      "started_at", :default => '2000-01-01 09:00:00', :null => false
+    t.time      "left_at",    :default => '2000-01-01 17:00:00', :null => false
+    t.integer   "lunch_for",  :default => 60,                    :null => false
+    t.integer   "away_for",   :default => 0,                     :null => false
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|

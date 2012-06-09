@@ -6,7 +6,7 @@ used for time reporting. Manage your projects through tasks and report the time 
 Links
 -----
 + Check out the source at [github](https://github.com/FreddieBoi/Working925 "Working925 at github")
-+ Check out the very latest live version at [heroku](http://working925.heroku.com/ "Working925 at heroku")
++ Check out the very latest live version at [heroku](http://working925.herokuapp.com/ "Working925 at heroku")
 
 Author
 ------

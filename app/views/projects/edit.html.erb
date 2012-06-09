@@ -1,6 +1,20 @@
-<h1>Editing project</h1>
-
+<% title "Edit Project"%> <h2>Edit Project</h2>
+<p></p>
 <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<h3>Cancel?</h3>
+<ul>
+  <li>
+    <%= link_to 'Back to Project', @project %>
+  </li>
+  <li>
+    <%= link_to 'Back to My Projects', projects_path %>
+  </li>
+</ul>
+
+<h3>Silly Project?</h3>
+<ul>
+  <li>
+    <%= link_to 'Delete it', @project, confirm: 'Are you sure?', method: :delete %> (can not be undone).
+  </li>
+</ul>

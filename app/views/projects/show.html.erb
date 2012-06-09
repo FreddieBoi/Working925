@@ -1,20 +1,65 @@
-<p id="notice"><%= notice %></p>
-
+<% title "Project #{@project.title}" %> <h2><%= @project.title %></h2>
 <p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
-
-<p>
-  <b>Desc:</b>
   <%= @project.desc %>
 </p>
-
+<h3>Tasks</h3>
 <p>
-  <b>User:</b>
-  <%= @project.user %>
+  Found <strong><%= pluralize(@project.tasks.count, "task") %></strong> with status distribution <span class="idle"><%= @project.tasks.where(status: "idle").count %></span>, <span class="progress"><%= @project.tasks.where(status: "progress").count %></span>, <span class="done"><%= @project.tasks.where(status: "done").count %></span>.
 </p>
+<ul>
+  <li>
+    <%= link_to 'List Project Tasks', project_tasks_path(@project) %>
+  </li>
+  <li>
+    <%= link_to 'Add Task', new_project_task_path(@project) %>
+  </li>
+</ul>
 
+<h3>Reports</h3>
+<p>
+  Found <strong><%= pluralize(@project.tasks.count, "report") %></strong>. Totally bla bla bla hours.
+</p>
+<ul>
+  <li>
+    <%= link_to 'List Project Reports', reports_path(project_id: @project.id) %>
+  </li>
+  <li>
+    <%= link_to 'Write Report', new_project_task_path(@project) %>
+  </li>
+</ul>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<h3>Collaborators</h3>
+<p>
+  Found <strong><%= pluralize(@project.users.count, "collaborator") %></strong>.
+</p>
+<table class="list">
+  <tr>
+    <th>User</th>
+    <th># Reports</th>
+  </tr>
+  <% @project.users.each do |user| %>
+  <tr>
+    <td><%= gravatar_for current_user, :size => 24 %>
+    <% if current_user == user %>
+    <%= link_to current_user.email, edit_user_registration_path %>
+    <% else %>
+    <%= user.email %>
+    <% end %></td>
+    <td>0</td>
+  </tr>
+  <% end %>
+</table>
+<ul>
+  <li>
+    <%= link_to 'Add Collaborator', edit_project_path(@project) %>
+  </li>
+</ul>
+<h3>Related</h3>
+<ul>
+  <li>
+    <%= link_to 'Edit Project', edit_project_path(@project) %>
+  </li>
+  <li>
+    <%= link_to 'Back to My Projects', projects_path %>
+  </li>
+</ul>

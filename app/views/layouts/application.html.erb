@@ -11,44 +11,42 @@
 
       <header>
         <div id="heading">
-          <h1>Working925</h1>
+          <h1><%= link_to app_title, root_path %></h1>
           <p>
             <em>&#9834; What a way to make a living &#9834;</em>
           </p>
         </div>
-
-        <nav id="header-nav">
-          <ul>
-            <li>
-              <%= link_to "Home", root_path %>
-            </li>
-            <li>
-              <%= link_to "My reports", reports_path %>
-            </li>
-            <li>
-              <%= link_to "New report", new_report_path %>
-            </li>
-          </ul>
-        </nav>
-        <nav id="user-nav">
-          <ul>
-            <% if user_signed_in? %>
-            <li>
-              <%= link_to current_user.email, edit_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to "Sign out", destroy_user_session_path %>
-            </li>
-            <% else %>
-            <li>
-              <%= link_to "Sign in", new_user_session_path %>
-            </li>
-            <li>
-              <%= link_to "Sign up", new_user_registration_path %>
-            </li>
-            <% end %>
-          </ul>
-        </nav>
+        <div id="navigation">
+          <nav id="header-nav">
+            <ul>
+              <li>
+                <%= link_to "My Projects", projects_path %>
+              </li>
+              <li>
+                <%= link_to "My Reports", reports_path %>
+              </li>
+              <li>
+                <%= link_to "Write Report", new_report_path %>
+              </li>
+              <% if user_signed_in? %>
+              <li class="userinfo">
+                <%= gravatar_for current_user, :size => 24 %>
+                <%= link_to current_user.email, edit_user_registration_path %>
+              </li>
+              <li class="userinfo">
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+              </li>
+              <% else %>
+              <li class="userinfo">
+                <%= link_to "Sign in", new_user_session_path %>
+              </li>
+              <li class="userinfo">
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
       </header>
 
       <% flash.each do |key, value| %>

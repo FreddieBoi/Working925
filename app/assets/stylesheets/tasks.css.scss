@@ -1,3 +1,21 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+span.idle {
+  @include text-shadow;
+  color: #f00;
+  font-weight: bold;
+}
+
+span.progress {
+  @include text-shadow;
+  color: #ff7f00;
+  font-weight: bold;
+}
+
+span.done {
+  @include text-shadow;
+  color: #0f0;
+  font-weight: bold;
+}

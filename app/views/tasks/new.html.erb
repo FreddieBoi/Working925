@@ -1,5 +1,8 @@
-<h1>New task</h1>
+<% title "New Task for #{@project.title}" %> <h2>New Task for <%= @project.title %></h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', tasks_path %>
+<h3>Cancel?</h3>
+<p>
+  <%= link_to 'Back to Tasks', project_tasks_path(@project) %>
+</p>

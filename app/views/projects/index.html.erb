@@ -1,27 +1,27 @@
-<h1>Listing projects</h1>
-
-<table>
+<% title "My Projects" %> <h2>My Projects</h2>
+<p>
+  Below, you see all the projects where you are a collaborator.
+</p>
+<h3>Projects</h3>
+<table class="list">
   <tr>
     <th>Title</th>
-    <th>Desc</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Description</th>
+    <th># Collaborators</th>
+    <th># Tasks</th>
   </tr>
-
-<% @projects.each do |project| %>
+  <% @projects.each do |project| %>
   <tr>
-    <td><%= project.title %></td>
+    <td><%= link_to project.title, project %></td>
     <td><%= project.desc %></td>
-    <td><%= project.user %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= project.users.count %></td>
+    <td><%= project.tasks.count %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Project', new_project_path %>
+<h3>Related</h3>
+<ul>
+  <li>
+    <%= link_to 'New Project', new_project_path %>
+  </li>
+</ul>

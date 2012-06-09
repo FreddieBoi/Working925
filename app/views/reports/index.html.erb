@@ -1,29 +1,49 @@
-<% title "My reports" %>
-<h2>My reports</h2>
+<% title "My Reports" %> <h2>My Reports</h2>
 <p>
-  Found <%= pluralize(@reports.count, "report") %> for <%= h @date.strftime("%Y-%m") %>.
-</p>
-<p>
-  <b>Totally worked for:</b>
-  <%= @total_h %> hours (<%= @total_s %>)
+  Below, you see all your reports per month.
 </p>
 <div id="calendar">
   <h2 id="month"> <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
-  <%= h @date.strftime("%B %Y") %>
+  <%= @date.strftime("%B %Y") %>
   <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %></h2>
-  <%= calendar_for @reports, :year => @date.year, :month => @date.month do |calendar| %>
-    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-    <% calendar.day(:day_method => :worked_on) do |date, reports|%>
-      <%= date.day %>
-      <ul>
-        <% for report in reports %>
-        <li>
-          <%= link_to "#{h(report.worked_for_h)} hours", report %>
-        </li>
-        <% end %>
-      </ul>
+  <%= calendar_for @reports, :year => @date.year, :month => @date.month, :first_day_of_week => 1 do |calendar| %>
+  <%= calendar.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+  <% calendar.day(:day_method => :worked_on) do |date, reports|%>
+  <%= link_to date.day, new_report_path(:worked_on => date), :class => "day", :title => "New Report for #{date}" %>
+  <ul>
+    <% for report in reports %>
+    <li>
+      <%= link_to pluralize(report.worked_for_h.round(2), "hour"), report %>
+    </li>
     <% end %>
+  </ul>
+  <% end %>
   <% end %>
 </div>
-<br />
-<%= link_to 'New report', new_report_path %>
+<h3>Month Summary</h3>
+<p>
+  Found <strong><%= pluralize(@reports.count, "report") %></strong> for <strong><%= @date.strftime("%B %Y") %></strong>.
+</p>
+<p>
+  Totally worked for <strong><%= pluralize(@total_h, "hour") %> (<%= @total_s %>)</strong>.
+</p>
+<p>
+  Average reported time was <strong><%= pluralize(@avg_reported, "hour") %></strong>.
+</p>
+<h3>Overall Summary</h3>
+<p>
+  Found <strong><%= pluralize(@overall_reports_count, "report") %></strong>.
+</p>
+<p>
+  Totally worked for <strong><%= pluralize(@overall_h, "hour") %> (<%= @overall_s %>)</strong>.
+</p>
+<p>
+  Average reported time was <strong><%= pluralize(@overall_avg_reported, "hour") %></strong>.
+</p>
+<h3>Related</h3>
+<ul>
+  <li>
+    <%= link_to 'New Report', new_report_path %>
+  </li>
+</ul>
+

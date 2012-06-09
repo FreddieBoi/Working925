@@ -1,6 +1,20 @@
-<h1>Editing task</h1>
-
+<% title "Edit Task" %><h2>Edit Task</h2>
+<p></p>
 <%= render 'form' %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<h3>Cancel?</h3>
+<ul>
+  <li>
+    <%= link_to 'Back to Task', project_task_path(@project, @task) %>
+  </li>
+  <li>
+    <%= link_to 'Back to Project Tasks', project_tasks_path(@project) %>
+  </li>
+</ul>
+
+<h3>Useless Task?</h3>
+<ul>
+  <li>
+    <%= link_to 'Delete it', @report, :confirm => 'Are you sure?', :method => :delete %> (can not be undone).
+  </li>
+</ul>

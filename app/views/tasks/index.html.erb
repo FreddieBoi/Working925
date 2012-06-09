@@ -1,27 +1,38 @@
-<h1>Listing tasks</h1>
-
-<table>
+<% title "Tasks for #{@project.title}" %> <h2>Tasks for <%= @project.title %></h2>
+<p>
+  Below, you can see all the project tasks and their status.
+</p>
+<h3>Tasks</h3>
+<table class="list">
   <tr>
     <th>Title</th>
-    <th>Desc</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Description</th>
+    <th>Status</th>
   </tr>
 
-<% @tasks.each do |task| %>
+  <% @tasks.each do |task| %>
   <tr>
-    <td><%= task.title %></td>
+    <td><%= link_to task.title, project_task_path(@project, task) %></td>
     <td><%= task.desc %></td>
-    <td><%= task.project %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
+    <td><span class="<%= task.status %>"><%= task.status.capitalize %></span></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Task', new_task_path %>
+<h3>Filter?</h3>
+<p>
+  Currently showing
+  <% if params[:status] %>
+  <span class="<%= params[:status] %>"><%= params[:status].capitalize %></span>
+  <% else %>
+  <span class="highlight">All</span>
+  <% end %> tasks. Show <%= link_to "All", project_tasks_path(@project)%>, <%= link_to "Idle", project_tasks_path(@project, :status => "idle")%>, <%= link_to "Progress", project_tasks_path(@project, :status => "progress")%> or <%= link_to "Done", project_tasks_path(@project, :status => "done")%>.
+</p>
+<h3>Related</h3>
+<ul>
+  <li>
+    <%= link_to 'Add Task', new_project_task_path(@project) %>
+  </li>
+  <li>
+    <%= link_to "Back to Project", project_path(@project) %>
+  </li>
+</ul>

@@ -1,30 +1,31 @@
-<% title "Report for #{@report.worked_on}" %>
-<h2>Report for <%= @report.worked_on %></h2>
+<% title "Report for #{@report.worked_on}" %> <h2>Report for <%= @report.worked_on %></h2>
 
 <p>
-  <b>Started at:</b>
+  <strong>Started at:</strong>
   <%= "0" if @report.started_at.hour < 10 %><%= @report.started_at.hour %> : <%= "0" if @report.started_at.min < 10 %><%= @report.started_at.min %>
 </p>
-
 <p>
-  <b>Left at:</b>
+  <strong>Left at:</strong>
   <%= "0" if @report.left_at.hour < 10 %><%= @report.left_at.hour %> : <%= "0" if @report.left_at.min < 10 %><%= @report.left_at.min %>
 </p>
-
 <p>
-  <b>Lunch for:</b>
+  <strong>Lunch for:</strong>
   <%= @report.lunch_for %> minutes
 </p>
-
 <p>
-  <b>Away for:</b>
+  <strong>Away for:</strong>
   <%= @report.away_for %> minutes
 </p>
-
 <p>
-  <b>Totally worked for:</b>
+  <strong>Totally worked for:</strong>
   <%= @report.worked_for_h %> hours (<%= @report.worked_for_s %>)
 </p>
-
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<h3>Related</h3>
+<ul>
+  <li>
+    <%= link_to 'Edit Report', edit_report_path(@report) %>
+  </li>
+  <li>
+    <%= link_to 'Back to My Reports', reports_path %>
+  </li>
+</ul>

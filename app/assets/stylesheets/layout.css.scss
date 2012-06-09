@@ -48,35 +48,54 @@ h1, h2, h3 {
 }
 
 #calendar table {
+  margin-top: 10px;
   border-collapse: collapse;
   width: 100%;
+  border: 2px solid #000;
+  @include box-shadow;
 }
 
 #calendar td,
 #calendar th {
   font-family: "Lucida Grande",arial,helvetica,sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   padding: 6px;
-  border: 1px solid #999;
+  border: 1px solid #000;
 }
 
 #calendar th {
-  background: #ddd;
-  color: #666;
+  background: $background-color;
+  color: #fff;
+  @include text-shadow;
   text-align: center;
   width: 14.2857142857143%;
 }
 
 #calendar td {
-  background: #fff;
-  color: #777;
+  background: lighten($background-color, 10%);
+  color: #fff;
   height: 80px;
   vertical-align: top;
   font-size: 16px;
+  a.day {
+    color: #fff;
+    @include text-shadow;
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 #calendar .notmonth {
-  color: #CCC;
+  background: lighten($background-color, 20%);
+  color: #888;
+  a.day {
+    text-shadow: none;
+    color: #888;
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 #calendar #month {
@@ -91,8 +110,16 @@ h1, h2, h3 {
 }
 
 #calendar .today {
-  background-color: #DDD;
-  color: #000;
+  background-color: $background-color;
+  color: #fff;
+  font-size: 20px;
+  a.day {
+    color: $highlight-color;
+    @include text-shadow;
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 #calendar ul {
@@ -104,7 +131,15 @@ h1, h2, h3 {
 
 #calendar li {
   margin: 0;
-  padding: 0;
-  font-size: 11px;
+  font-size: 14px;
+  font-weight: bold;
   text-align: center;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }

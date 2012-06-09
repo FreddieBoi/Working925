@@ -1,20 +1,19 @@
-<p id="notice"><%= notice %></p>
-
+<% title "Task #{@task.title}"%> <h2><%= @task.title %></h2>
 <p>
-  <b>Title:</b>
-  <%= @task.title %>
+  <strong>Project:</strong>
+  <%= link_to @project.title, project_path(@project) %>
 </p>
-
+<p><strong></strong></p>
 <p>
-  <b>Desc:</b>
   <%= @task.desc %>
 </p>
-
 <p>
-  <b>Project:</b>
-  <%= @task.project %>
+  <ul>
+    <li>
+      <%= link_to 'Edit Task', edit_project_task_path(@project, @task) %>
+    </li>
+    <li>
+      <%= link_to 'Back to Tasks', project_tasks_path %>
+    </li>
+  </ul>
 </p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>

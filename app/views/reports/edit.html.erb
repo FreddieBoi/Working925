@@ -1,8 +1,20 @@
-<% title "Edit report"%>
-<h2>Edit report</h2>
-
+<% title "Edit Report"%> <h2>Edit Report</h2>
+<p></p>
 <%= render 'form' %>
 
-<%= link_to 'Show', @report %> |
-<%= link_to 'Delete', @report, :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to 'Back', reports_path %>
+<h3>Cancel?</h3>
+<ul>
+  <li>
+    <%= link_to 'Back to Report', @report %>
+  </li>
+  <li>
+    <%= link_to 'Back to My Reports', reports_path %>
+  </li>
+</ul>
+
+<h3>Bad Report?</h3>
+<ul>
+  <li>
+    <%= link_to 'Delete it', @report, :confirm => 'Are you sure?', :method => :delete %> (can not be undone).
+  </li>
+</ul>

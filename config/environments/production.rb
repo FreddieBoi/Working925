@@ -57,4 +57,7 @@ Working925::Application.configure do
   config.assets.digest = true
   
   config.action_mailer.default_url_options = { :host => 'working925.herokuapp.com' }
+  
+  # Force usage of https://
+  config.force_ssl = true
 end

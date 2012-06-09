@@ -5,6 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.text :desc
       t.references :project
       t.string :slug
+      t.string :status, :null => false
 
       t.timestamps
     end

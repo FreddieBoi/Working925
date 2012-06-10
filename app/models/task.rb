@@ -18,6 +18,7 @@ class Task < ActiveRecord::Base
   end
 
 end
+
 # == Schema Information
 #
 # Table name: tasks

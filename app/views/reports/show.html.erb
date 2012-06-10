@@ -20,6 +20,10 @@
   <strong>Totally worked for:</strong>
   <%= @report.worked_for_h %> hours (<%= @report.worked_for_s %>)
 </p>
+<h3>Log</h3>
+<p>
+  <%= raw(@report.log).html_safe %>
+</p>
 <h3>Related</h3>
 <ul>
   <li>

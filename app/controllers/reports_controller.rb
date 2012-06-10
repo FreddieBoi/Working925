@@ -1,5 +1,5 @@
 class ReportsController < InheritedResources::Base
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js => { :only => :index}
 
   before_filter :authenticate_user!
 

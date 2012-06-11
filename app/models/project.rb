@@ -13,11 +13,11 @@ end
 #
 # Table name: projects
 #
-#  id         :integer         not null, primary key
+#  id         :integer         primary key
 #  title      :string(255)     not null
 #  desc       :text
 #  slug       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :timestamp
+#  updated_at :timestamp
 #
 

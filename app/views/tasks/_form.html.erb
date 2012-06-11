@@ -6,8 +6,13 @@
   <%= f.text_field :title %>
 </div>
 <div class="field">
-  <%= f.label :desc, "Description"%>
+  <%= f.label :desc, "Status"%>
   <br />
+  <%= f.select(:status, options_for_select(["idle", "progress", "done"], "idle")) %>
+</div>
+<div class="field">
+  <%= f.label :desc, "Description"%>
+  <%= markdown_desc_text "Describe the task" %>
   <%= f.text_area :desc %>
 </div>
 <div class="actions">

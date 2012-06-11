@@ -33,6 +33,8 @@ gem 'friendly_id', '~> 4.0.0'
 
 gem 'gravatar_image_tag'
 
+gem 'rdiscount'
+
 group :development do
   gem 'annotate', '2.4.1.beta1'
   # To use debugger

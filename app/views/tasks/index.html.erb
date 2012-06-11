@@ -6,15 +6,12 @@
 <table class="list">
   <tr>
     <th>Title</th>
-    <th>Description</th>
     <th>Status</th>
   </tr>
-
   <% @tasks.each do |task| %>
   <tr>
     <td><%= link_to task.title, project_task_path(@project, task) %></td>
-    <td><%= task.desc %></td>
-    <td><span class="<%= task.status %>"><%= task.status.capitalize %></span></td>
+    <td><%= status_span task.status %></td>
   </tr>
   <% end %>
 </table>
@@ -22,7 +19,7 @@
 <p>
   Currently showing
   <% if params[:status] %>
-  <span class="<%= params[:status] %>"><%= params[:status].capitalize %></span>
+  <%= status_span params[:status] %>
   <% else %>
   <span class="highlight">All</span>
   <% end %> tasks. Show <%= link_to "All", project_tasks_path(@project)%>, <%= link_to "Idle", project_tasks_path(@project, :status => "idle")%>, <%= link_to "Progress", project_tasks_path(@project, :status => "progress")%> or <%= link_to "Done", project_tasks_path(@project, :status => "done")%>.

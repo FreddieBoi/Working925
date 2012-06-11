@@ -26,8 +26,8 @@
   <%= f.text_field :away_for %>
 </div>
 <div class="field">
-  <%= f.label :log, "Log (what did I do today?)" %>
-  <br />
+  <%= f.label :log, "Log" %>
+  <%= markdown_desc_text "Describe what you did today" %>
   <%= f.text_area :log %>
 </div>
 <div class="actions">

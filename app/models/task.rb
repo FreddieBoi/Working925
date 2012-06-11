@@ -14,7 +14,9 @@ class Task < ActiveRecord::Base
 
   private
   def set_default_status
-    self.status = "idle"
+    if self.status.blank?
+      self.status = "idle"
+    end
   end
 
 end
@@ -23,13 +25,13 @@ end
 #
 # Table name: tasks
 #
-#  id         :integer         not null, primary key
+#  id         :integer         primary key
 #  title      :string(255)     not null
 #  desc       :text
 #  project_id :integer
 #  slug       :string(255)
 #  status     :string(255)     not null
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :timestamp
+#  updated_at :timestamp
 #
 

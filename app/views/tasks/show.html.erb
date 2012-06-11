@@ -3,17 +3,15 @@
   <strong>Project:</strong>
   <%= link_to @project.title, project_path(@project) %>
 </p>
-<p><strong></strong></p>
-<p>
-  <%= @task.desc %>
-</p>
-<p>
-  <ul>
-    <li>
-      <%= link_to 'Edit Task', edit_project_task_path(@project, @task) %>
-    </li>
-    <li>
-      <%= link_to 'Back to Tasks', project_tasks_path %>
-    </li>
-  </ul>
-</p>
+<p><strong>Status:</strong> <%= status_span @task.status %></p>
+<h3>Description</h3>
+<%= markdown_to_html_safe @task.desc %>
+<h3>Related</h3>
+<ul>
+  <li>
+    <%= link_to 'Edit Task', edit_project_task_path(@project, @task) %>
+  </li>
+  <li>
+    <%= link_to 'Back to Tasks', project_tasks_path %>
+  </li>
+</ul>

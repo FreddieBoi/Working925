@@ -1,7 +1,5 @@
 <% title "Project #{@project.title}" %> <h2><%= @project.title %></h2>
-<p>
-  <%= @project.desc %>
-</p>
+<%= markdown_to_html_safe(@project.desc) %>
 <h3>Tasks</h3>
 <p>
   Found <strong><%= pluralize(@project.tasks.count, "task") %></strong> with status distribution <span class="idle"><%= @project.tasks.where(status: "idle").count %></span>, <span class="progress"><%= @project.tasks.where(status: "progress").count %></span>, <span class="done"><%= @project.tasks.where(status: "done").count %></span>.

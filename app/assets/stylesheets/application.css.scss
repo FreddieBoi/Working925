@@ -3,10 +3,18 @@
  */
 
 $highlight-color: #F5AD24;
+$header-text-color: $highlight-color;
 $content-background-color: #668A54; //darken(#7FA56C, 10%);
 $dark-content-background-color: #213423;
 $background-color: #373737;
 $sharp-border: 2px solid #000;
+
+@mixin vertical-gradient($top-color: $content-background-color, $bot-color: $dark-content-background-color) {
+  background: $top-color; /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$top-color}', endColorstr='#{$bot-color}'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from($top-color), to($bot-color)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  $top-color,  $bot-color); /* for firefox 3.6+ */ 
+} 
 
 @mixin text-shadow {
   text-shadow: 1px 1px 2px #000;
@@ -73,7 +81,8 @@ a {
 header {
   #heading {
     padding-left: 110px;
-    background-image: linear-gradient(bottom, darken($content-background-color, 20%) 0%, $content-background-color 100%);
+    @include vertical-gradient;
+    /*background-image: linear-gradient(bottom, darken($content-background-color, 20%) 0%, $content-background-color 100%);
     background-image: -o-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $content-background-color 100%);
     background-image: -moz-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $content-background-color 100%);
     background-image: -webkit-linear-gradient(bottom, darken($content-background-color, 20%) 0%, $content-background-color 100%);
@@ -84,29 +93,30 @@ header {
       left top,
       color-stop(0, darken($content-background-color, 20%)),
       color-stop(1, $content-background-color)
-    );
+    );*/
     h1 {
       @include text-shadow;
-      color: $highlight-color;
+      color: $header-text-color;
       padding: 30px 0 15px;
       a {
         @include text-shadow;
-        color: $highlight-color;
+        color: $header-text-color;
         text-decoration: none;
         &:visited {
           @include text-shadow;
-          color: $highlight-color;
+          color: $header-text-color;
           text-decoration: none;
         }
         &:hover {
           @include text-shadow;
-          color: $highlight-color;
+          color: $header-text-color;
           text-decoration: none;
         }
       }
     }
     em {
       @include text-shadow;
+      color: #fff;
       font-size: 17px;
     }
   }
@@ -168,6 +178,7 @@ footer {
 }
 
 section#content {
+  @include vertical-gradient($content-background-color, darken($content-background-color, 20%));
   background-color: $content-background-color;
   padding-top: 25px;
   padding-bottom: 25px;

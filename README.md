@@ -5,9 +5,13 @@ used for time reporting. Manage your projects through tasks and report the time 
 
 Links
 -----
-+ Check out the source at [github](https://github.com/FreddieBoi/Working925 "Working925 at github")
-+ Check out the very latest live version at [heroku](http://working925.herokuapp.com/ "Working925 at heroku")
++ Check out the source at [GitHub](https://github.com/FreddieBoi/Working925 "Working925 at GitHub")
++ Check out the very latest live version at [Heroku](http://working925.herokuapp.com/ "Working925 at Heroku")
+
+Documentation
+-------------
+Run `rake doc:app` to generate the API documentation.
 
 Author
 ------
-[Freddie Pettersson](https://github.com/FreddieBoi "FreddieBoi at github").
+[Freddie Pettersson](https://github.com/FreddieBoi "FreddieBoi at GitHub").

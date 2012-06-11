@@ -42,22 +42,27 @@ class Report < ActiveRecord::Base
 
   def markup_links
     self.log.gsub!(/(^| ){1}(?:https?:\/\/|www\.)\S+( |$){1}/i) do |match|
-      # Starts/ends with a whitespace? Add it to result (but not in the anchor)
+    # Starts/ends with a whitespace? Add it to result (but not in the anchor)
       starts_with_whitespace = match.start_with? " "
       ends_with_whitespace = match.end_with? " "
-      
+
       # Remove leading/trailing whitespaces
       match.strip!
-      
+
       # Check if we accidentally matched a interpunctuation sign.
       interpunctuations = [".", "!", "?"]
       last = match.split("").last
       interpunctuation = last if interpunctuations.include? last
-      
+
       # Ends with an interpunctuation? Add it to result (but not in the anchor)
       if interpunctuation
         # Remove it
         match[match.length-1] = ""
+      end
+
+      # Add "http://" if not included to avoid local requests (eg. "reports/www.asdf.com")
+      if match.start_with? "www"
+        match = "http://#{match}"
       end
 
       # Prepare the result
